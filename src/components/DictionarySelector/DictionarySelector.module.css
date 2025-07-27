@@ -1,0 +1,21 @@
+.selectorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 15px;
+  padding: 12px 24px;
+  box-shadow: 0 4px 47px 0 rgba(18, 20, 23, 0.08);
+  background-color: #fff;
+}
+
+.selectorLi {
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+}
+
+.selectorLi::first-letter {
+  text-transform: uppercase;
+}

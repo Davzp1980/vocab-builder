@@ -1,0 +1,115 @@
+.dictionaryContainer {
+  padding: 32px 16px 48px 16px;
+  background-color: #f8f8f8;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.input,
+.select {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 15px;
+  padding: 12px 24px;
+  width: 343px;
+  height: 48px;
+  background-color: transparent;
+}
+
+.inputContainer {
+  position: relative;
+}
+
+.input {
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+
+  text-transform: capitalize;
+}
+
+.input::placeholder {
+  color: #121417;
+}
+
+.searchSvg {
+  position: absolute;
+  top: 14px;
+  right: 24px;
+  width: 20px;
+  height: 20px;
+}
+
+.searchSvgRotate {
+  transform: rotate(180deg);
+}
+
+.radioBtnDiv {
+  display: flex;
+  gap: 16px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.radio {
+  display: none;
+}
+
+.radioSvg {
+  width: 18px;
+  height: 18px;
+}
+
+.toStudyP {
+  display: flex;
+  align-items: center;
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(18, 20, 23, 0.5);
+  margin-bottom: 8px;
+}
+
+.spanStatistic {
+  font-family: 'MacPawDisplay', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #121417;
+  margin-left: 8px;
+}
+
+.addWordContainer {
+  display: flex;
+  gap: 16px;
+}
+
+.addWordTrainBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+}
+
+.svgBtn {
+  width: 20px;
+  height: 20px;
+}

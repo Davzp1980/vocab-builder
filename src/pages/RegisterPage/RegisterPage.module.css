@@ -1,0 +1,266 @@
+.mainRegisterContainer {
+}
+
+.logoDiv {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  margin-bottom: 12px;
+}
+
+.svg {
+  width: 36px;
+  height: 36px;
+}
+
+.logoText {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 133%;
+}
+
+.imgDiv {
+  width: 247px;
+  margin: 0 auto;
+  margin-bottom: 8px;
+}
+
+.registerFormDiv {
+  border-radius: 25px 25px 0 0;
+  padding: 32px 16px;
+  background-color: rgba(133, 170, 159, 0.1);
+}
+
+.formH1 {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 107%;
+  letter-spacing: -0.02em;
+  color: #121417;
+
+  margin-bottom: 16px;
+}
+
+.formText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(18, 20, 23, 0.8);
+
+  margin-bottom: 16px;
+}
+
+.form {
+  margin-bottom: 16px;
+}
+
+.inputDiv {
+  margin-bottom: 16px;
+}
+
+.input {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 15px;
+  padding-left: 18px;
+  width: 343px;
+  height: 56px;
+
+  background-color: transparent;
+}
+
+.inputPasswordDiv {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.inputPassword {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 15px;
+  padding-left: 18px;
+  width: 343px;
+  height: 56px;
+
+  background-color: transparent;
+}
+
+.inputPasswordSuccess {
+  border: 1px solid #3cbf61;
+}
+
+.inputPasswordError {
+  border: 1px solid #d80027;
+}
+
+.input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+}
+
+.inputPassword::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+}
+
+.isPasswordVisibleBtn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  border: none;
+  background-color: transparent;
+}
+
+.svg {
+  width: 20px;
+  height: 20px;
+}
+
+.errorSpan {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  color: #d80027;
+}
+
+.successSpan {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  color: #3cbf61;
+}
+
+.submitBtn {
+  margin: 0 auto;
+  border: none;
+  border-radius: 30px;
+  width: 343px;
+  height: 56px;
+  background-color: #85aa9f;
+
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #f8f8f8;
+}
+
+.linkLogin {
+  display: block;
+  width: 50px;
+  margin: 0 auto;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: rgba(18, 20, 23, 0.5);
+  margin-bottom: 57px;
+}
+
+@media (min-width: 768px) {
+  .mainRegisterContainer {
+    position: relative;
+  }
+
+  .logoDiv {
+    margin-bottom: 140px;
+  }
+
+  .imgDiv {
+    display: none;
+  }
+
+  .registerFormDiv {
+    margin: 0 auto;
+    border-radius: 30px;
+    padding: 48px 64px;
+    width: 627px;
+  }
+
+  .formH1 {
+    font-size: 40px;
+    line-height: 120%;
+    margin-bottom: 20px;
+  }
+
+  .formText {
+    font-size: 20px;
+    margin-bottom: 32px;
+  }
+
+  .form {
+    margin-bottom: 32px;
+  }
+
+  .inputDiv {
+    margin-bottom: 18px;
+  }
+
+  .input {
+    border: 1px solid rgba(18, 20, 23, 0.1);
+    border-radius: 15px;
+    padding-left: 18px;
+    width: 500px;
+
+    background-color: transparent;
+  }
+
+  .inputPassword {
+    width: 500px;
+  }
+
+  .registerFormDiv {
+    margin-bottom: 172px;
+  }
+
+  .bottomP {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    margin-bottom: 106px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .mainRegisterContainer {
+  }
+
+  .registerFormContainer {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+  }
+
+  .registerFormDiv {
+    margin: 0;
+    order: 1;
+  }
+
+  .imgDiv {
+    width: 498px;
+    order: 2;
+    display: block;
+    margin: 0;
+
+    margin-bottom: 16px;
+  }
+
+  .submitBtn {
+    font-size: 18px;
+    line-height: 156%;
+  }
+}

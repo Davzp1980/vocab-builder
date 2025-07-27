@@ -1,0 +1,65 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  padding-bottom: 16px;
+}
+
+.logoDiv {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.logoSvg {
+  width: 36px;
+  height: 36px;
+}
+
+.logoP {
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 133%;
+  color: #121417;
+}
+
+.menuDiv {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.userName {
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+}
+
+.userLogoDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  width: 36px;
+  height: 36px;
+  background-color: #85aa9f;
+}
+
+.userLogoIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.burgerBtn {
+  border: none;
+  background-color: transparent;
+}
+
+.burgerBtnSvg {
+  width: 32px;
+  height: 22px;
+}

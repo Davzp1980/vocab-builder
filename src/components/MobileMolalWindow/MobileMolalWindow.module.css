@@ -1,0 +1,106 @@
+.modalMainContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #85aa9f;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  z-index: 9999;
+}
+
+.modalContainer {
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 166px;
+}
+
+.logoDiv {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.userName {
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #f8f8f8;
+}
+
+.userLogoDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  width: 36px;
+  height: 36px;
+  background-color: #f8f8f8;
+}
+
+.userLogoIcon {
+  width: 20px;
+  height: 20px;
+  color: #85aa9f;
+  fill: #85aa9f;
+  stroke: #85aa9f;
+}
+
+.closeBtn {
+  border: none;
+  background-color: transparent;
+}
+
+.closeIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.dictionaryContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.dictionaryLink {
+  display: inline;
+  border-radius: 15px;
+  padding: 12px 20px;
+  width: 110px;
+  height: 43px;
+  background-color: #fcfcfc;
+
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #121417;
+}
+
+.link {
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #fcfcfc;
+}
+
+.logoutBtn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #fcfcfc;
+}
+
+.linkSvg {
+  width: 16px;
+  height: 16px;
+  fill: #121417;
+}

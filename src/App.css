@@ -1,0 +1,36 @@
+.main-container {
+  position: relative;
+  padding-top: 16px;
+  max-width: 375px;
+  margin: 0 auto;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    max-width: 768px;
+    padding: 24px 32px;
+  }
+
+  .backIMG {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 525px;
+    height: 437px;
+  }
+
+  .container {
+    padding: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .main-container {
+    max-width: 1440px;
+    padding: 24px 100px;
+  }
+}

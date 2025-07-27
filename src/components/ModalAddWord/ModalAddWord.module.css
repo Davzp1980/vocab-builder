@@ -1,0 +1,183 @@
+.addWordMainContainer {
+  position: fixed;
+  top: 189px;
+  left: 16px;
+  border-radius: 15px;
+  width: 342px;
+  height: 621px;
+  background-color: #85aa9f;
+  padding: 48px 16px;
+}
+
+.addWordH2 {
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  color: #fcfcfc;
+  margin-bottom: 16px;
+}
+
+.addWordP {
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #fcfcfc;
+  margin-bottom: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input,
+.select {
+  outline: none;
+  border: 1px solid #d1d5db;
+  border-radius: 15px;
+  padding: 12px 24px;
+  width: 311px;
+  height: 48px;
+  background-color: transparent;
+}
+
+.inputCategories {
+  margin-bottom: 58px;
+}
+
+.inputContainer {
+  position: relative;
+}
+
+.input {
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+
+  text-transform: capitalize;
+}
+
+.input::placeholder {
+  color: #121417;
+}
+
+.errorSpan {
+  font-family: 'MacPaw', sans-serif;
+  color: red;
+}
+
+.searchSvg {
+  position: absolute;
+  top: 14px;
+  right: 24px;
+  width: 20px;
+  height: 20px;
+}
+
+.searchSvgRotate {
+  transform: rotate(180deg);
+}
+
+.radioBtnDiv {
+  margin-top: 8px;
+  display: flex;
+  gap: 16px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.radio {
+  display: none;
+}
+
+.radioSvg {
+  width: 18px;
+  height: 18px;
+}
+
+.ukrContainer {
+  margin-bottom: 16px;
+}
+
+.languageDiv {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.languageSvg {
+  width: 28px;
+  height: 28px;
+}
+
+.ukraineP {
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #fcfcfc;
+}
+
+.engContainer {
+  margin-bottom: 32px;
+}
+
+.submitBtnDiv {
+  display: flex;
+  gap: 8px;
+}
+
+.addBtn {
+  border: none;
+  border-radius: 30px;
+  padding: 12px 63px;
+  width: 159px;
+  height: 48px;
+  background-color: #fcfcfc;
+
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+}
+
+.cancelBtn {
+  border: none;
+  border: 1px solid rgba(252, 252, 252, 0.4);
+  border-radius: 30px;
+  padding: 12px 45px;
+  width: 145px;
+  height: 48px;
+  background-color: transparent;
+
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: #fcfcfc;
+}
+
+.closeBtn {
+  border: none;
+  background-color: transparent;
+
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.closeBtnSvg {
+  width: 24px;
+  height: 24px;
+}

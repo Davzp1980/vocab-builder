@@ -15,10 +15,11 @@ import {
   setIsAddWordModalOpen,
   setIsOpenSelect,
 } from '../../redux/dictionary/slice';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getStatistic } from '../../redux/dictionary/operations';
 import ModalAddWord from '../ModalAddWord/ModalAddWord';
 import { getWordsOwn } from '../../redux/dictionary/operations';
+import debounce from 'lodash.debounce';
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -59,13 +60,15 @@ function Dashboard() {
 
   let isVerb = false;
 
-  useEffect(() => {
-    const isReg = selected === 'Regular' ? true : false;
-    if (selectedCategory === 'verb') {
-      isVerb = true;
-    }
-    if (!word) return;
-    const timer = setTimeout(() => {
+  // import debounce from 'lodash.debounce';
+  // import { useCallback } from 'react';
+
+  useCallback(
+    debounce(() => {
+      const isReg = selected === 'Regular' ? true : false;
+      if (selectedCategory === 'verb') {
+        isVerb = true;
+      }
       dispatch(
         getWordsOwn({
           keyword: word.trim(),
@@ -73,16 +76,34 @@ function Dashboard() {
           ...(isVerb ? { isIrregular: isReg } : {}),
         })
       );
-      // console.log('VerbType-', selected);
-      // console.log('word-', word);
-      // console.log('category-', selectedCategory);
-      reset();
-    }, 900);
+    }, 500),
+    [dispatch, selectedCategory]
+  );
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [word, reset]);
+  // useEffect(() => {
+  //   const isReg = selected === 'Regular' ? true : false;
+  //   if (selectedCategory === 'verb') {
+  //     isVerb = true;
+  //   }
+  //   if (!word) return;
+  //   const timer = setTimeout(() => {
+  //     dispatch(
+  //       getWordsOwn({
+  //         keyword: word.trim(),
+  //         category: selectedCategory,
+  //         ...(isVerb ? { isIrregular: isReg } : {}),
+  //       })
+  //     );
+  //     // console.log('VerbType-', selected);
+  //     // console.log('word-', word);
+  //     // console.log('category-', selectedCategory);
+  //     reset();
+  //   }, 900);
+
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, [word, reset]);
 
   function addWord() {
     dispatch(setIsAddWordModalOpen(true));
@@ -151,11 +172,11 @@ function Dashboard() {
             <label className={css.radioLabel}>
               {selected === 'Irregular' ? (
                 <svg className={css.radioSvg}>
-                  <use href="/public/sprite.svg#radio-on"></use>
+                  <use href="/sprite.svg#radio-on"></use>
                 </svg>
               ) : (
                 <svg className={css.radioSvg}>
-                  <use href="/public/sprite.svg#radio-off"></use>
+                  <use href="/sprite.svg#radio-off"></use>
                 </svg>
               )}
               <input

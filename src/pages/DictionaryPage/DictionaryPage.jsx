@@ -1,5 +1,4 @@
 import css from './DictionaryPage.module.css';
-
 import Dashboard from '../../components/Dashboard/Dashboard';
 import WordsTable from '../../components/WordsTable/WordsTable';
 import { useEffect } from 'react';

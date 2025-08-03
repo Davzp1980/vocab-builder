@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   addNewWord,
+  deleteWord,
+  editWord,
   getStatistic,
   getWordsCategories,
   getWordsOwn,
@@ -18,15 +20,18 @@ import {
 const dictionarySlice = createSlice({
   name: 'dictionary',
   initialState: {
-    recomended: [],
+    recommended: [],
     favorites: [],
     library: [],
-    wordsOwn: [],
+    ownWordId: '',
+    wordsOwn: {},
+    editWord: {},
     statistic: {},
     wordsCategories: [],
     selectedWordCategory: '',
     isModalOpen: false,
     isAddWordModalOpen: false,
+    isEditModalOpen: false,
     isOpenSelect: false,
   },
 
@@ -46,6 +51,16 @@ const dictionarySlice = createSlice({
 
       .addCase(getWordsOwn.fulfilled, (state, action) => {
         state.wordsOwn = action.payload;
+      })
+
+      .addCase(deleteWord.fulfilled, (state, action) => {
+        state.wordsOwn.results = state.wordsOwn.results.filter(
+          word => word._id !== action.payload
+        );
+      })
+
+      .addCase(editWord.fulfilled, (state, action) => {
+        state.editWord = action.payload;
       });
   },
 
@@ -60,8 +75,15 @@ const dictionarySlice = createSlice({
     setIsOpenSelect(state, action) {
       state.isOpenSelect = action.payload;
     },
+
+    setIsEditModalOpen(state, action) {
+      state.isEditModalOpen = action.payload;
+    },
     setSelectedWordCategory(state, action) {
       state.selectedWordCategory = action.payload;
+    },
+    setOwnWordId(state, action) {
+      state.ownWordId = action.payload;
     },
   },
 });
@@ -71,6 +93,8 @@ export const {
   setIsOpenSelect,
   setSelectedWordCategory,
   setIsAddWordModalOpen,
+  setOwnWordId,
+  setIsEditModalOpen,
 } = dictionarySlice.actions;
 
 export const dictionaryReducer = dictionarySlice.reducer;

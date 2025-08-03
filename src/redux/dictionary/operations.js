@@ -30,15 +30,11 @@ export const getStatistic = createAsyncThunk(
 export const addNewWord = createAsyncThunk(
   'dictionary/addNewWord',
   async (word, thunkAPI) => {
-    console.log(word);
-
     try {
       const res = await axios.post('/words/create', word);
-      console.log(res.data);
+
       return res.data;
     } catch (error) {
-      console.log(error);
-
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -46,13 +42,48 @@ export const addNewWord = createAsyncThunk(
 
 export const getWordsOwn = createAsyncThunk(
   'dictionary/wordsOwn',
-  async (_, thunkAPI) => {
+  async (params, thunkAPI) => {
+    console.log(params);
+
     try {
-      const res = await axios.get('/words/own');
+      const res = await axios.get('/words/own', {
+        params: params,
+      });
 
       console.log(res.data);
 
       return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const editWord = createAsyncThunk(
+  'dictionary/editWord',
+  async (word, thunkAPI) => {
+    try {
+      const res = await axios.patch(`/words/edit/${word._id}`, {
+        en: word.en,
+        ua: word.ua,
+        category: word.category,
+        isIrregular: word.isIrregular,
+      });
+
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteWord = createAsyncThunk(
+  'dictionary/deleteWord',
+  async (id, thunkAPI) => {
+    try {
+      await axios.delete(`/words/delete/${id}`);
+
+      return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

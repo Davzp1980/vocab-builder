@@ -1,0 +1,36 @@
+.ActionsBtnModalContainer {
+  border-radius: 15px;
+  width: 117px;
+  height: 70px;
+  box-shadow: 0 4px 47px 0 rgba(18, 20, 23, 0.08);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  padding-left: 24px;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  gap: 8px;
+}
+
+.btnSvg {
+  width: 16px;
+  height: 16px;
+}
+
+.btnSvgDel {
+  width: 32px;
+  height: 32px;
+}
+
+.btnText {
+  font-family: 'MacPaw', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #121417;
+}

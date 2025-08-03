@@ -14,7 +14,11 @@ import {
 } from '../../redux/dictionary/slice';
 import clsx from 'clsx';
 import DictionarySelector from '../DictionarySelector/DictionarySelector';
-import { addNewWord } from '../../redux/dictionary/operations';
+import {
+  addNewWord,
+  getStatistic,
+  getWordsOwn,
+} from '../../redux/dictionary/operations';
 import toast from 'react-hot-toast';
 
 function ModalAddWord() {
@@ -123,6 +127,8 @@ function ModalAddWord() {
     )
       .unwrap()
       .then(() => {
+        dispatch(getWordsOwn());
+        dispatch(getStatistic());
         toast.success('Word added successful');
       })
       .catch(() => {

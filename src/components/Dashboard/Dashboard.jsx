@@ -16,14 +16,17 @@ import {
   setIsOpenSelect,
 } from '../../redux/dictionary/slice';
 import { useEffect, useState } from 'react';
-import { getStatistic, getWordsOwn } from '../../redux/dictionary/operations';
+import { getStatistic } from '../../redux/dictionary/operations';
 import ModalAddWord from '../ModalAddWord/ModalAddWord';
+import { getWordsOwn } from '../../redux/dictionary/operations';
 
 function Dashboard() {
   const dispatch = useDispatch();
   const [rotate, setRotate] = useState(false);
+  const [openCategoryList, setOpenCategoryList] = useState(true);
 
   const isOpenSelect = useSelector(selectIsOpenSelect);
+
   const selectedCategory = useSelector(selectWordCategory);
   const statistic = useSelector(selectStatistic);
 
@@ -35,8 +38,9 @@ function Dashboard() {
 
   function onClickSelect() {
     setRotate(prev => !prev);
+    setOpenCategoryList(prev => !prev);
 
-    dispatch(setIsOpenSelect(true));
+    dispatch(setIsOpenSelect(openCategoryList));
   }
 
   const ValidationSchema = yup.object().shape({
@@ -53,10 +57,25 @@ function Dashboard() {
   const selected = watch('category');
   const word = watch('word');
 
+  let isVerb = false;
+
   useEffect(() => {
+    const isReg = selected === 'Regular' ? true : false;
+    if (selectedCategory === 'verb') {
+      isVerb = true;
+    }
     if (!word) return;
     const timer = setTimeout(() => {
-      console.log(word);
+      dispatch(
+        getWordsOwn({
+          keyword: word.trim(),
+          category: selectedCategory,
+          ...(isVerb ? { isIrregular: isReg } : {}),
+        })
+      );
+      // console.log('VerbType-', selected);
+      // console.log('word-', word);
+      // console.log('category-', selectedCategory);
       reset();
     }, 900);
 
@@ -71,10 +90,6 @@ function Dashboard() {
 
   function train() {
     console.log('Train');
-  }
-
-  function allWords() {
-    dispatch(getWordsOwn());
   }
 
   return (
@@ -96,6 +111,7 @@ function Dashboard() {
             value={selectedCategory}
             className={css.input}
             type="text"
+            name="selector"
             placeholder="Categories"
             {...register('selector')}
             onClick={onClickSelect}
@@ -177,9 +193,6 @@ function Dashboard() {
         </button>
       </div>
       {isAddWordModalOpen && <ModalAddWord />}
-      <button type="button" onClick={allWords}>
-        WordsAll
-      </button>
     </div>
   );
 }

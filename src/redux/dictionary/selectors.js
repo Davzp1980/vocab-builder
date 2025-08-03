@@ -13,3 +13,9 @@ export const selectIsAddWordModalOpen = state =>
   state.dictionary.isAddWordModalOpen;
 
 export const selectWordsOwn = state => state.dictionary.wordsOwn;
+
+export const selectOwnWordId = state => state.dictionary.ownWordId;
+
+export const selectIsEditModalOpen = state => state.dictionary.isEditModalOpen;
+
+export const selectEditWord = state => state.dictionary.editWord;

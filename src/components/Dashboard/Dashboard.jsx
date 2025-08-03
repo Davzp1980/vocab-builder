@@ -12,6 +12,7 @@ import {
   selectWordCategory,
 } from '../../redux/dictionary/selectors';
 import {
+  setFilters,
   setIsAddWordModalOpen,
   setIsOpenSelect,
 } from '../../redux/dictionary/slice';
@@ -19,7 +20,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { getStatistic } from '../../redux/dictionary/operations';
 import ModalAddWord from '../ModalAddWord/ModalAddWord';
 import { getWordsOwn } from '../../redux/dictionary/operations';
-// import { debounce } from 'lodash';
+import { debounce } from 'lodash';
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ function Dashboard() {
     category: yup.string().required('Please select an option'),
   });
 
-  const { register, reset, watch } = useForm({
+  const { register, reset, watch, handleSubmit } = useForm({
     resolver: yupResolver(ValidationSchema),
     defaultValues: { category: 'Regular' },
   });
@@ -58,52 +59,58 @@ function Dashboard() {
   const selected = watch('category');
   const word = watch('word');
 
-  let isVerb = false;
-
-  // import debounce from 'lodash.debounce';
-  // import { useCallback } from 'react';
-
-  // useCallback(
-  //   debounce(() => {
-  //     const isReg = selected === 'Regular' ? true : false;
-  //     if (selectedCategory === 'verb') {
-  //       isVerb = true;
-  //     }
+  // const debouncedSubmit = useCallback(
+  //   debounce((wordValue, selectedCategoryValue, isVerbValue, isRegValue) => {
   //     dispatch(
   //       getWordsOwn({
-  //         keyword: word.trim(),
-  //         category: selectedCategory,
-  //         ...(isVerb ? { isIrregular: isReg } : {}),
+  //         keyword: wordValue.trim(),
+  //         category: selectedCategoryValue,
+  //         ...(isVerbValue ? { isIrregular: isRegValue } : {}),
   //       })
   //     );
   //   }, 500),
-  //   [dispatch, selectedCategory]
+  //   [dispatch]
   // );
 
+  // function onSubmit(data) {
+  //   debouncedSubmit(data);
+  // }
+
   useEffect(() => {
-    const isReg = selected === 'Regular' ? true : false;
-    if (selectedCategory === 'verb') {
-      isVerb = true;
-    }
-    if (!word) return;
-    const timer = setTimeout(() => {
+    const isReg = selected === 'Regular';
+    const debouncedDispatch = debounce(() => {
       dispatch(
-        getWordsOwn({
+        setFilters({
           keyword: word.trim(),
           category: selectedCategory,
-          ...(isVerb ? { isIrregular: isReg } : {}),
+          isIrregular: isReg,
         })
       );
-      // console.log('VerbType-', selected);
-      // console.log('word-', word);
-      // console.log('category-', selectedCategory);
-      reset();
     }, 900);
 
+    debouncedDispatch(); // обязательно вызвать
+
     return () => {
-      clearTimeout(timer);
+      debouncedDispatch.cancel(); // очистка
     };
-  }, [word, reset]);
+
+    // if (!word) return;
+    // const timer = setTimeout(() => {
+    //   dispatch(
+    //     setFilters({
+    //       keyword: word.trim(),
+    //       category: selectedCategory,
+    //       isIrregular: isReg,
+    //     })
+    //   );
+
+    //   reset();
+    // }, 900);
+
+    // return () => {
+    //   clearTimeout(timer);
+    // };
+  }, [dispatch, word, reset, selected, selectedCategory]);
 
   function addWord() {
     dispatch(setIsAddWordModalOpen(true));

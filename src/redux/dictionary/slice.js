@@ -20,6 +20,7 @@ import {
 const dictionarySlice = createSlice({
   name: 'dictionary',
   initialState: {
+    filters: {},
     recommended: [],
     favorites: [],
     library: [],
@@ -85,6 +86,9 @@ const dictionarySlice = createSlice({
     setOwnWordId(state, action) {
       state.ownWordId = action.payload;
     },
+    setFilters(state, action) {
+      state.filters = action.payload;
+    },
   },
 });
 
@@ -95,6 +99,7 @@ export const {
   setIsAddWordModalOpen,
   setOwnWordId,
   setIsEditModalOpen,
+  setFilters,
 } = dictionarySlice.actions;
 
 export const dictionaryReducer = dictionarySlice.reducer;

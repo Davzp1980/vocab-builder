@@ -43,14 +43,10 @@ export const addNewWord = createAsyncThunk(
 export const getWordsOwn = createAsyncThunk(
   'dictionary/wordsOwn',
   async (params, thunkAPI) => {
-    console.log(params);
-
     try {
       const res = await axios.get('/words/own', {
         params: params,
       });
-
-      console.log(res.data);
 
       return res.data;
     } catch (error) {

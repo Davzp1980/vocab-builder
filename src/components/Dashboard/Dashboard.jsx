@@ -19,7 +19,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { getStatistic } from '../../redux/dictionary/operations';
 import ModalAddWord from '../ModalAddWord/ModalAddWord';
 import { getWordsOwn } from '../../redux/dictionary/operations';
-import { debounce } from 'lodash';
+// import { debounce } from 'lodash';
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -63,30 +63,12 @@ function Dashboard() {
   // import debounce from 'lodash.debounce';
   // import { useCallback } from 'react';
 
-  useCallback(
-    debounce(() => {
-      const isReg = selected === 'Regular' ? true : false;
-      if (selectedCategory === 'verb') {
-        isVerb = true;
-      }
-      dispatch(
-        getWordsOwn({
-          keyword: word.trim(),
-          category: selectedCategory,
-          ...(isVerb ? { isIrregular: isReg } : {}),
-        })
-      );
-    }, 500),
-    [dispatch, selectedCategory]
-  );
-
-  // useEffect(() => {
-  //   const isReg = selected === 'Regular' ? true : false;
-  //   if (selectedCategory === 'verb') {
-  //     isVerb = true;
-  //   }
-  //   if (!word) return;
-  //   const timer = setTimeout(() => {
+  // useCallback(
+  //   debounce(() => {
+  //     const isReg = selected === 'Regular' ? true : false;
+  //     if (selectedCategory === 'verb') {
+  //       isVerb = true;
+  //     }
   //     dispatch(
   //       getWordsOwn({
   //         keyword: word.trim(),
@@ -94,16 +76,34 @@ function Dashboard() {
   //         ...(isVerb ? { isIrregular: isReg } : {}),
   //       })
   //     );
-  //     // console.log('VerbType-', selected);
-  //     // console.log('word-', word);
-  //     // console.log('category-', selectedCategory);
-  //     reset();
-  //   }, 900);
+  //   }, 500),
+  //   [dispatch, selectedCategory]
+  // );
 
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, [word, reset]);
+  useEffect(() => {
+    const isReg = selected === 'Regular' ? true : false;
+    if (selectedCategory === 'verb') {
+      isVerb = true;
+    }
+    if (!word) return;
+    const timer = setTimeout(() => {
+      dispatch(
+        getWordsOwn({
+          keyword: word.trim(),
+          category: selectedCategory,
+          ...(isVerb ? { isIrregular: isReg } : {}),
+        })
+      );
+      // console.log('VerbType-', selected);
+      // console.log('word-', word);
+      // console.log('category-', selectedCategory);
+      reset();
+    }, 900);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [word, reset]);
 
   function addWord() {
     dispatch(setIsAddWordModalOpen(true));

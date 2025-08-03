@@ -19,7 +19,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { getStatistic } from '../../redux/dictionary/operations';
 import ModalAddWord from '../ModalAddWord/ModalAddWord';
 import { getWordsOwn } from '../../redux/dictionary/operations';
-import debounce from 'lodash.debounce';
+import { debounce } from 'lodash';
 
 function Dashboard() {
   const dispatch = useDispatch();

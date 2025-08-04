@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './WordsPagination.module.css';
 import { selectWordsOwn } from '../../redux/dictionary/selectors';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { setFilters } from '../../redux/dictionary/slice';
 import clsx from 'clsx';
 
@@ -45,13 +45,7 @@ function WordsPagination() {
       return;
     }
 
-    setCurrentPage(prev => {
-      if (numbBtn1 === 1) {
-        setNumbBtn1(1);
-        setNumbBtn2(2);
-      }
-      return prev - 1;
-    });
+    setCurrentPage(prev => prev - 1);
 
     setNumbBtn1(prev => prev - 1);
     setNumbBtn2(prev => prev - 1);
@@ -61,6 +55,11 @@ function WordsPagination() {
         page: currentPage - 1,
       })
     );
+
+    if (numbBtn1 === 1) {
+      setNumbBtn1(1);
+      setNumbBtn2(2);
+    }
   }
 
   function onclickPlus10() {

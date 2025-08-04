@@ -16,10 +16,10 @@ import {
   setIsAddWordModalOpen,
   setIsOpenSelect,
 } from '../../redux/dictionary/slice';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getStatistic } from '../../redux/dictionary/operations';
 import ModalAddWord from '../ModalAddWord/ModalAddWord';
-import { getWordsOwn } from '../../redux/dictionary/operations';
+
 import { debounce } from 'lodash';
 
 function Dashboard() {
@@ -51,7 +51,7 @@ function Dashboard() {
     category: yup.string().required('Please select an option'),
   });
 
-  const { register, reset, watch, handleSubmit } = useForm({
+  const { register, reset, watch } = useForm({
     resolver: yupResolver(ValidationSchema),
     defaultValues: { category: 'Regular' },
   });
@@ -59,57 +59,23 @@ function Dashboard() {
   const selected = watch('category');
   const word = watch('word');
 
-  // const debouncedSubmit = useCallback(
-  //   debounce((wordValue, selectedCategoryValue, isVerbValue, isRegValue) => {
-  //     dispatch(
-  //       getWordsOwn({
-  //         keyword: wordValue.trim(),
-  //         category: selectedCategoryValue,
-  //         ...(isVerbValue ? { isIrregular: isRegValue } : {}),
-  //       })
-  //     );
-  //   }, 500),
-  //   [dispatch]
-  // );
-
-  // function onSubmit(data) {
-  //   debouncedSubmit(data);
-  // }
-
   useEffect(() => {
-    const isReg = selected === 'Regular';
+    // const isReg = selected === 'Regular';
     const debouncedDispatch = debounce(() => {
       dispatch(
         setFilters({
           keyword: word.trim(),
           category: selectedCategory,
-          isIrregular: isReg,
+          // isIrregular: isReg,
         })
       );
     }, 900);
 
-    debouncedDispatch(); // обязательно вызвать
+    debouncedDispatch();
 
     return () => {
       debouncedDispatch.cancel(); // очистка
     };
-
-    // if (!word) return;
-    // const timer = setTimeout(() => {
-    //   dispatch(
-    //     setFilters({
-    //       keyword: word.trim(),
-    //       category: selectedCategory,
-    //       isIrregular: isReg,
-    //     })
-    //   );
-
-    //   reset();
-    // }, 900);
-
-    // return () => {
-    //   clearTimeout(timer);
-    // };
   }, [dispatch, word, reset, selected, selectedCategory]);
 
   function addWord() {

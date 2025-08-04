@@ -1,0 +1,40 @@
+.wordsPaginationMainContainer {
+  padding: 0 25px 48px 25px;
+  background-color: #f8f8f8;
+}
+
+.mainBtnDiv {
+  display: flex;
+  gap: 10px;
+}
+
+.pagBtn {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 8px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.pagLeftSvg {
+  width: 16px;
+  height: 16px;
+
+  stroke: #121417;
+}
+
+.svgDisabled {
+  stroke: gray;
+}
+
+.pagNumbersDiv {
+  display: flex;
+  gap: 10px;
+}
+
+.activeBtn {
+  background-color: #85aa9f;
+}

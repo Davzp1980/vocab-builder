@@ -89,6 +89,9 @@ const dictionarySlice = createSlice({
     setFilters(state, action) {
       state.filters = action.payload;
     },
+    setFiltersReset(state) {
+      state.filters = {};
+    },
   },
 });
 
@@ -100,6 +103,7 @@ export const {
   setOwnWordId,
   setIsEditModalOpen,
   setFilters,
+  setFiltersReset,
 } = dictionarySlice.actions;
 
 export const dictionaryReducer = dictionarySlice.reducer;
